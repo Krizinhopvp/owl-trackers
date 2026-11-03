@@ -35,7 +35,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build -- --base=./
+        run: pnpm build -- --base=/owl-trackers/
 
       - name: Prepare manifest paths
         run: sed -i 's|"/|"./|g' dist/manifest.json
