@@ -38,7 +38,17 @@ jobs:
         run: pnpm build -- --base=/owl-trackers/
 
       - name: Prepare manifest paths
-        run: sed -i 's|"./|"https://krizinhopvp.github.io/owl-trackers/|g' dist/manifest.json
+        run: |
+          node -e '
+          const fs = require("fs");
+          const p = "dist/manifest.json";
+          const m = JSON.parse(fs.readFileSync(p, "utf8"));
+          const base = "https://krizinhopvp.github.io/owl-trackers";
+          m.icon = base + "/owl-trackers-logo.svg";
+          m.background_url = base + "/src/background/background.html";
+          m.action.icon = base + "/owl-trackers-logo-outline.svg";
+          m.action.popover = base + "/src/action/action.html";
+          fs.writeFileSync(p, JSON.stringify(m, null, 2));
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
