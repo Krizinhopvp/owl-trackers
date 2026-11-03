@@ -11,7 +11,7 @@ const menuIcon = new URL(
 const contextMenuLabel = "Owl Trackers";
 
 OBR.onReady(async () => {
-  fetch("/manifest.json")
+  fetch("/owl-trackers/manifest.json")
     .then((response) => response.json())
     .then((json) =>
       console.log(json["name"] + " - version: " + json["version"]),
@@ -42,7 +42,7 @@ OBR.onReady(async () => {
       },
     ],
     embed: {
-      url: "/src/trackerMenu/trackerMenu.html",
+      url: "/owl-trackers/src/trackerMenu/trackerMenu.html",
       height: 178,
     },
   });
@@ -66,7 +66,7 @@ OBR.onReady(async () => {
       },
     ],
     embed: {
-      url: "/src/trackerMenu/trackerMenu.html",
+      url: "/owl-trackers/src/trackerMenu/trackerMenu.html",
       height: 178,
     },
   });
